@@ -1,0 +1,33 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: guildpilot_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-guildpilot}
+      POSTGRES_USER: ${POSTGRES_USER:-guildpilot}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    ports:
+      - "127.0.0.1:5434:5432"
+    volumes:
+      - guildpilot_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-guildpilot} -d ${POSTGRES_DB:-guildpilot}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  bot:
+    build: .
+    container_name: guildpilot_bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql+psycopg2://${POSTGRES_USER:-guildpilot}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-guildpilot}
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  guildpilot_postgres_data:

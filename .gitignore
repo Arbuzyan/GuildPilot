@@ -1,0 +1,48 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# Logs and local databases/backups
+*.log
+*.dump
+*.backup
+*.sqlite
+*.sqlite3
+
+# Local datasets and exports
+data/*
+!data/.gitkeep
+
+# Secrets and credentials
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+credentials/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Test and coverage artifacts
+.coverage
+htmlcov/
