@@ -110,4 +110,4 @@ alembic check
 
 ## License
 
-No license has been selected. Until a license is added, standard copyright applies and reuse/redistribution permissions are not granted by this repository.
+GuildPilot is licensed under the MIT License. See [LICENSE](LICENSE) for details.
