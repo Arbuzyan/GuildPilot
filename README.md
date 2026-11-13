@@ -4,8 +4,6 @@
 
 GuildPilot is a Python application for publishing approved sales records to Discord, scheduling transparent posts, and providing an AI-assisted conversational interface grounded in application data.
 
-> **Release status: pre-release candidate.** Do not use this build against a production database until fresh-install and legacy-adoption procedures have been verified.
-
 ## What it does
 
 - Runs one explicitly configured Discord bot account.
